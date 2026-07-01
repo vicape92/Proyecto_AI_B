@@ -17,12 +17,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
-    # Esto le indica a GitHub Actions que ejecute los comandos npm dentro de tu carpeta src
-    defaults:
-      run:
-        working-directory: ./src
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -30,12 +24,12 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # Puedes ajustarlo a la versión de Node que uses
+          node-version: '22'
           cache: 'npm'
-          cache-dependency-path: './src/package-lock.json'
+          cache-dependency-path: './package-lock.json'
 
       - name: Install dependencies
-        run: npm ci # Usa 'npm install' si no tienes un package-lock.json en el repo
+        run: npm ci
 
       - name: Build with Vite
         run: npm run build
@@ -46,9 +40,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Vite compila en la carpeta 'dist' por defecto. 
-          # Como tu app está en src, la ruta completa es src/dist
-          path: './src/dist'
+          # Vite compila por defecto en la carpeta 'dist' en la raíz
+          path: './dist'
 
   deploy:
     environment:
