@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div>
+  <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+    <form onSubmit="{{ onSubmit }}" novalidate="" style="display:flex;flex-direction:column;gap:14px;max-width:{{ maxWidth }}">
+      <div style="display:flex;gap:0;flex-wrap:wrap;{{ rowGap }}">
+        <label for="{{ emailId }}" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Correo electrónico</label>
+        <input id="{{ emailId }}" type="email" inputmode="email" autocomplete="email" placeholder="tu@email.com" value="{{ email }}" onChange="{{ onEmailChange }}" aria-invalid="{{ emailInvalid }}" aria-describedby="{{ msgId }}" style="flex:1;min-width:200px;background:#0e0b07;border:1px solid rgba(200,150,62,.35);color:#f3ebdc;font-family:'Barlow';font-size:15px;padding:13px 14px;border-radius:2px 0 0 2px;outline:none" style-focus="border-color:#e6bd73;box-shadow:0 0 0 3px rgba(230,189,115,.25)"/>
+        <button type="submit" disabled="{{ submitting }}" style="background:#c8963e;color:#13100b;border:none;font-family:'Archivo';font-weight:700;font-size:14px;letter-spacing:.03em;padding:13px 22px;border-radius:0 2px 2px 0;cursor:pointer;white-space:nowrap" style-hover="background:#e6bd73" style-focus="outline:3px solid #e6bd73;outline-offset:2px">{{ submitLabel }}</button>
+      </div>
+      <label style="display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.5;color:#b7a889;cursor:pointer">
+        <input type="checkbox" checked="{{ consent }}" onChange="{{ onConsentChange }}" style="margin-top:3px;width:16px;height:16px;accent-color:#c8963e;flex:none"/>
+        <span>Acepto la <a href="#privacy" title="Política de privacidad — página pendiente" style="color:#e6bd73;text-decoration:underline">política de privacidad</a> y quiero recibir novedades de la saga por email.</span>
+      </label>
+      <sc-if value="{{ hasMessage }}" hint-placeholder-val="{{ false }}">
+        <p id="{{ msgId }}" role="alert" style="margin:0;font-size:13px;color:{{ msgColor }}">{{ message }}</p>
+      </sc-if>
+      <sc-if value="{{ showHint }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:0;font-size:11.5px;color:#5f574a">Modo demo: prueba <b>ya@ejemplo.com</b> (ya suscrito) o <b>error@ejemplo.com</b> (error de envío).</p>
+      </sc-if>
+    </form>
+  </sc-if>
+
+  <sc-if value="{{ showSuccess }}" hint-placeholder-val="{{ false }}">
+    <div role="status" style="display:flex;align-items:flex-start;gap:12px;background:rgba(200,150,62,.1);border:1px solid rgba(200,150,62,.4);border-radius:4px;padding:16px 18px;max-width:{{ maxWidth }}">
+      <span aria-hidden="true" style="font-size:18px;color:#e6bd73">✓</span>
+      <div><strong style="font-family:'Archivo';font-size:14.5px">Revisa tu correo</strong><p style="margin:6px 0 0;font-size:13.5px;color:#d9cbae;line-height:1.5">Te hemos enviado un email de confirmación a <b>{{ email }}</b>. Confírmalo para completar tu suscripción.</p></div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ showAlready }}" hint-placeholder-val="{{ false }}">
+    <div role="status" style="display:flex;align-items:flex-start;gap:12px;background:rgba(180,150,90,.08);border:1px solid rgba(200,150,62,.3);border-radius:4px;padding:16px 18px;max-width:{{ maxWidth }}">
+      <span aria-hidden="true" style="font-size:18px;color:#b7a889">◆</span>
+      <div><strong style="font-family:'Archivo';font-size:14.5px">Ya formas parte de la aventura</strong><p style="margin:6px 0 0;font-size:13.5px;color:#d9cbae;line-height:1.5"><b>{{ email }}</b> ya está suscrito a las novedades.</p></div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ showError }}" hint-placeholder-val="{{ false }}">
+    <div role="alert" style="display:flex;align-items:flex-start;gap:12px;background:rgba(168,90,50,.1);border:1px solid rgba(168,90,50,.5);border-radius:4px;padding:16px 18px;max-width:{{ maxWidth }}">
+      <span aria-hidden="true" style="font-size:18px;color:#c97a4e">⚠</span>
+      <div>
+        <strong style="font-family:'Archivo';font-size:14.5px">No se pudo completar el registro</strong>
+        <p style="margin:6px 0 12px;font-size:13.5px;color:#d9cbae;line-height:1.5">Ha ocurrido un error al enviar tu solicitud. Inténtalo de nuevo en unos minutos.</p>
+        <button onClick="{{ onRetry }}" style="background:transparent;border:1px solid #c97a4e;color:#e4d8bf;font-family:'Archivo';font-weight:700;font-size:13px;padding:9px 16px;border-radius:2px;cursor:pointer" style-hover="background:rgba(168,90,50,.15)">Reintentar</button>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:480,&quot;height&quot;:140},&quot;compact&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+class Component extends DCLogic {
+  state = { email: '', consent: false, status: 'idle', message: '' };
+  _uid = Math.random().toString(36).slice(2, 8);
+
+  onEmailChange = (e) => this.setState({ email: e.target.value, status: 'idle', message: '' });
+  onConsentChange = (e) => this.setState({ consent: e.target.checked, status: 'idle', message: '' });
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    const email = this.state.email.trim();
+    if (!EMAIL_RE.test(email)) {
+      this.setState({ status: 'invalid', message: 'Introduce un email con formato válido.' });
+      return;
+    }
+    if (!this.state.consent) {
+      this.setState({ status: 'invalid', message: 'Debes aceptar la política de privacidad para continuar.' });
+      return;
+    }
+    this.setState({ status: 'submitting', message: '' });
+    const lower = email.toLowerCase();
+    window.setTimeout(() => {
+      if (lower.includes('ya@') || lower.includes('existente')) {
+        this.setState({ status: 'already' });
+      } else if (lower.includes('error@')) {
+        this.setState({ status: 'error' });
+      } else {
+        console.log('[track] newsletter_signup', { email });
+        this.setState({ status: 'success' });
+      }
+    }, 650);
+  };
+
+  onRetry = () => this.setState({ status: 'idle', message: '' });
+
+  renderVals() {
+    const s = this.state;
+    const compact = !!this.props.compact;
+    return {
+      maxWidth: compact ? '420px' : '480px',
+      rowGap: '',
+      emailId: 'nl-email-' + this._uid,
+      msgId: 'nl-msg-' + this._uid,
+      email: s.email,
+      consent: s.consent,
+      onEmailChange: this.onEmailChange,
+      onConsentChange: this.onConsentChange,
+      onSubmit: this.onSubmit,
+      onRetry: this.onRetry,
+      emailInvalid: s.status === 'invalid',
+      submitting: s.status === 'submitting',
+      submitLabel: s.status === 'submitting' ? 'Enviando…' : 'Suscribirme',
+      hasMessage: s.status === 'invalid' && !!s.message,
+      message: s.message,
+      msgColor: '#e2a15c',
+      showHint: !compact,
+      showForm: s.status !== 'success' && s.status !== 'already' && s.status !== 'error',
+      showSuccess: s.status === 'success',
+      showAlready: s.status === 'already',
+      showError: s.status === 'error',
+    };
+  }
+}
+</script>
+</body>
+</html>

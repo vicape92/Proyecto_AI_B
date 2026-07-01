@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#13100b;color:#f3ebdc;font-family:"Barlow",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  ::selection{background:#c8963e;color:#13100b}
+  a{color:inherit}
+  @keyframes trDust{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(-40px,-30px,0)}}
+  @keyframes trRays{0%,100%{opacity:.35}50%{opacity:.6}}
+  @keyframes trChevron{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+  .tr-reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+  .tr-reveal.tr-in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .tr-reveal{opacity:1!important;transform:none!important;transition:none!important}
+    [data-tr-anim]{animation:none!important}
+    #tr-hero-video{display:none!important}
+    #tr-hero-mobile-bg{display:block!important}
+  }
+  @media (max-width:680px){
+    #tr-hero-video{display:none!important}
+    #tr-hero-mobile-bg{display:block!important}
+  }
+</style>
+</helmet>
+<div id="tr-root" style="position:relative">
+  <a href="#tr-main" style="position:absolute;left:-9999px;top:0;background:#c8963e;color:#13100b;padding:12px 18px;z-index:200;font-family:'Archivo';font-weight:700;text-decoration:none;border-radius:0 0 4px 0" style-focus="left:0;top:0">Saltar al contenido principal</a>
+
+  <!-- ============ DESIGN TOKENS / DIRECCIÓN (referencia handoff, colapsable) ============ -->
+  <aside style="position:relative;z-index:60;background:#0e0b07;border-bottom:1px solid rgba(200,150,62,.22);font-size:13px">
+    <div style="max-width:1200px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <span style="font-family:'Archivo';font-weight:900;letter-spacing:.16em;font-size:12px;color:#c8963e">SISTEMA DE DISEÑO</span>
+      <span style="color:#7d7261;font-size:12px">Referencia de tokens para handoff · se retira en la entrega final</span>
+      <button onClick="{{ toggleTokens }}" aria-expanded="{{ tokensOpen }}" aria-controls="tr-tokens-panel" style="margin-left:auto;cursor:pointer;background:transparent;border:1px solid rgba(200,150,62,.4);color:#e6bd73;font-family:'Barlow';font-weight:600;font-size:12px;padding:5px 12px;border-radius:2px" style-hover="background:rgba(200,150,62,.12)">{{ tokensLabel }}</button>
+    </div>
+    <sc-if value="{{ tokensOpen }}" hint-placeholder-val="{{ false }}">
+    <div id="tr-tokens-panel" style="max-width:1200px;margin:0 auto;padding:4px 24px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px">
+      <div>
+        <div style="font-family:'Archivo';font-weight:700;font-size:11px;letter-spacing:.14em;color:#b7a889;margin-bottom:10px">PALETA · TIERRA/ORO</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <div style="text-align:center"><div style="width:44px;height:44px;background:#13100b;border:1px solid rgba(255,255,255,.1)"></div><div style="font-size:10px;color:#7d7261;margin-top:4px">bg</div></div>
+          <div style="text-align:center"><div style="width:44px;height:44px;background:#1c1710"></div><div style="font-size:10px;color:#7d7261;margin-top:4px">surface</div></div>
+          <div style="text-align:center"><div style="width:44px;height:44px;background:#c8963e"></div><div style="font-size:10px;color:#7d7261;margin-top:4px">oro</div></div>
+          <div style="text-align:center"><div style="width:44px;height:44px;background:#e6bd73"></div><div style="font-size:10px;color:#7d7261;margin-top:4px">oro claro</div></div>
+          <div style="text-align:center"><div style="width:44px;height:44px;background:#a85a32"></div><div style="font-size:10px;color:#7d7261;margin-top:4px">óxido</div></div>
+          <div style="text-align:center"><div style="width:44px;height:44px;background:#f3ebdc"></div><div style="font-size:10px;color:#7d7261;margin-top:4px">texto</div></div>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'Archivo';font-weight:700;font-size:11px;letter-spacing:.14em;color:#b7a889;margin-bottom:10px">TIPOGRAFÍA</div>
+        <div style="font-family:'Archivo';font-weight:900;font-size:22px;letter-spacing:.06em;line-height:1">Archivo 900 · display</div>
+        <div style="font-family:'Barlow';font-weight:400;font-size:14px;color:#b7a889;margin-top:6px">Barlow 400/600 · cuerpo — escala 12·14·16·18·24·28·34·40·56·96</div>
+      </div>
+      <div>
+        <div style="font-family:'Archivo';font-weight:700;font-size:11px;letter-spacing:.14em;color:#b7a889;margin-bottom:10px">ESPACIO · RADIO · ACENTO</div>
+        <div style="font-size:13px;color:#b7a889;line-height:1.7">Espacio: 4·8·12·16·24·32·48·64·96<br>Radio: 2 / 6 (esquinas afiladas, piedra)<br>Motivo: cumbre/chevron ▲ en nodos y separadores</div>
+      </div>
+      <div>
+        <div style="font-family:'Archivo';font-weight:700;font-size:11px;letter-spacing:.14em;color:#b7a889;margin-bottom:10px">COMPONENTES</div>
+        <div style="font-size:13px;color:#b7a889;line-height:1.7">Hero · TitleCard (compacta / completa · con-Steam / con-nota) · NewsletterForm (idle · error validación · éxito · ya-suscrito · error API) · EraSection · Bloque colapsable</div>
+      </div>
+    </div>
+    </sc-if>
+  </aside>
+
+  <!-- ============ HERO CINEMÁTICO ============ -->
+  <header role="banner" style="position:relative;min-height:100svh;display:flex;flex-direction:column;overflow:hidden;background:#0c0a06">
+    <div aria-hidden="true" style="position:absolute;inset:0;overflow:hidden">
+      <video id="tr-hero-video" autoplay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsinline="{{ true }}" preload="auto" poster="assets/temple-sunset.svg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <source src="assets/hero-video.mp4" type="video/mp4"/>
+      </video>
+      <div id="tr-hero-mobile-bg" style="position:absolute;inset:0;display:none;background-image:url('assets/temple-sunset.svg');background-size:cover;background-position:center 30%"></div>
+      <div id="tr-dust" data-tr-anim style="position:absolute;inset:-10%;background-image:radial-gradient(1px 1px at 20% 30%,rgba(243,235,220,.5),transparent),radial-gradient(1px 1px at 70% 60%,rgba(243,235,220,.4),transparent),radial-gradient(2px 2px at 40% 80%,rgba(230,189,115,.5),transparent),radial-gradient(1px 1px at 85% 20%,rgba(243,235,220,.4),transparent),radial-gradient(1px 1px at 55% 45%,rgba(243,235,220,.35),transparent);background-size:600px 600px;animation:trDust 26s linear infinite;mix-blend-mode:screen;opacity:.6"></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,9,5,.55) 0%,rgba(12,9,5,.15) 34%,rgba(12,9,5,.55) 72%,rgba(12,9,5,.94) 100%)"></div>
+    </div>
+
+    <nav aria-label="Principal" style="position:relative;z-index:10;display:flex;align-items:center;gap:24px;padding:22px 32px;max-width:1280px;margin:0 auto;width:100%">
+      <span style="font-family:'Archivo';font-weight:900;letter-spacing:.22em;font-size:15px">TR</span>
+      <div style="margin-left:auto;display:flex;gap:26px;font-size:14px;font-weight:500;color:#d9cbae">
+        <a href="#tr-timeline" style="text-decoration:none;padding:4px 0;border-bottom:1px solid transparent" style-hover="border-bottom-color:#c8963e;color:#f3ebdc" style-focus="outline:2px solid #e6bd73;outline-offset:3px">La saga</a>
+        <a href="#tr-other" style="text-decoration:none;padding:4px 0;border-bottom:1px solid transparent" style-hover="border-bottom-color:#c8963e;color:#f3ebdc" style-focus="outline:2px solid #e6bd73;outline-offset:3px">Otros juegos</a>
+        <a href="#tr-future" style="text-decoration:none;padding:4px 0;border-bottom:1px solid transparent" style-hover="border-bottom-color:#c8963e;color:#f3ebdc" style-focus="outline:2px solid #e6bd73;outline-offset:3px">El futuro</a>
+      </div>
+    </nav>
+
+    <div style="position:relative;z-index:10;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 24px 40px">
+      <div style="font-family:'Barlow';font-weight:600;font-size:13px;letter-spacing:.42em;color:#e6bd73;margin-bottom:22px">DESCUBRE LA SAGA</div>
+      <h1 style="margin:0;font-family:'Archivo';font-weight:900;letter-spacing:.08em;line-height:.9;font-size:clamp(52px,11vw,150px);text-shadow:0 6px 40px rgba(0,0,0,.6)">TOMB<br>RAIDER</h1>
+      <div style="width:132px;height:2px;background:linear-gradient(90deg,transparent,#c8963e,transparent);margin:30px 0 24px"></div>
+      <p style="margin:0;max-width:560px;font-size:clamp(17px,2vw,21px);line-height:1.55;color:#e4d8bf">Una arqueóloga. Tumbas olvidadas. Más de 25 años convirtiendo cada ruina en leyenda. Recorre toda la historia de Lara Croft, juego a juego.</p>
+      <a href="#tr-hook" style="margin-top:38px;display:inline-flex;align-items:center;gap:10px;text-decoration:none;background:#c8963e;color:#13100b;font-family:'Archivo';font-weight:700;letter-spacing:.06em;font-size:15px;padding:15px 30px;border-radius:2px;transition:transform .2s,background .2s" style-hover="background:#e6bd73;transform:translateY(-2px)" style-focus="outline:3px solid #e6bd73;outline-offset:2px">EMPEZAR EL RECORRIDO<span aria-hidden="true" style="font-size:18px">↓</span></a>
+    </div>
+
+    <button onClick="{{ toggleHero }}" aria-label="{{ heroBtnAria }}" style="position:absolute;bottom:22px;right:24px;z-index:12;display:inline-flex;align-items:center;gap:8px;cursor:pointer;background:rgba(12,9,5,.55);backdrop-filter:blur(4px);border:1px solid rgba(230,189,115,.45);color:#f3ebdc;font-family:'Barlow';font-weight:600;font-size:13px;padding:9px 14px;border-radius:2px" style-hover="border-color:#c8963e;background:rgba(12,9,5,.8)" style-focus="outline:3px solid #e6bd73;outline-offset:2px">
+      <span aria-hidden="true" style="font-size:12px">{{ heroIcon }}</span>{{ heroBtnLabel }}
+    </button>
+  </header>
+
+  <main id="tr-main">
+
+  <!-- ============ HOOK DE PERSONAJE ============ -->
+  <section aria-labelledby="tr-hook-h" data-screen-label="Hook" id="tr-hook" style="max-width:1200px;margin:0 auto;padding:96px 24px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:56px">
+      <div class="tr-reveal">
+        <div style="font-family:'Barlow';font-weight:600;font-size:12px;letter-spacing:.2em;color:#a85a32;margin-bottom:14px">¿QUIÉN ES?</div>
+        <h2 id="tr-hook-h" style="margin:0 0 18px;font-family:'Archivo';font-weight:900;font-size:clamp(28px,4vw,42px);line-height:1.05">Lara Croft</h2>
+        <p style="margin:0;font-size:17px;line-height:1.65;color:#d9cbae">Una aristócrata inglesa convertida en arqueóloga de acción. Desde 1996 se abre paso entre templos olvidados, tumbas trampa y ruinas perdidas, decidida a desvelar los secretos que otros prefieren dejar enterrados.</p>
+        <image-slot id="hook-lara-portrait" style="display:block;width:100%;height:220px;margin-top:24px" shape="rounded" radius="4" src="assets/cave-torch.svg" placeholder="Retrato oficial de Lara Croft"></image-slot>
+      </div>
+      <div class="tr-reveal">
+        <div style="font-family:'Barlow';font-weight:600;font-size:12px;letter-spacing:.2em;color:#a85a32;margin-bottom:14px">¿QUÉ ES?</div>
+        <h2 style="margin:0 0 18px;font-family:'Archivo';font-weight:900;font-size:clamp(28px,4vw,42px);line-height:1.05">Tomb Raider</h2>
+        <p style="margin:0;font-size:17px;line-height:1.65;color:#d9cbae">Una saga de aventura y exploración con más de 25 años de historia: puzles ambientales, plataformas imposibles y una arqueóloga que nunca deja una tumba sin explorar. Del píxel a la fotogrametría, así ha evolucionado su leyenda.</p>
+        <image-slot id="hook-franchise-art" style="display:block;width:100%;height:220px;margin-top:24px" shape="rounded" radius="4" src="assets/temple-sunset.svg" placeholder="Key art de la franquicia"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TIMELINE DE LA SAGA ============ -->
+  <section aria-labelledby="tr-tl-h" data-screen-label="Timeline" id="tr-timeline" style="max-width:1200px;margin:0 auto;padding:40px 24px 100px">
+    <div class="tr-reveal" style="margin-bottom:56px;text-align:center">
+      <span style="color:#c8963e;font-size:14px">▲</span>
+      <div style="font-family:'Barlow';font-weight:600;font-size:12px;letter-spacing:.2em;color:#e6bd73;margin:10px 0 10px">LA SAGA, ERA A ERA</div>
+      <h2 id="tr-tl-h" style="margin:0;font-family:'Archivo';font-weight:900;font-size:clamp(28px,4vw,44px)">Casi 30 años de expediciones</h2>
+    </div>
+
+    <div style="position:relative" style-before="content:'';position:absolute;left:19px;top:16px;bottom:16px;width:2px;background:linear-gradient(180deg,rgba(200,150,62,.5),rgba(200,150,62,.05))">
+
+      <!-- ERA 1 -->
+      <div class="tr-reveal" style="position:relative;margin-bottom:80px">
+        <div style="display:flex;align-items:center;gap:16px">
+          <div style="position:relative;z-index:1;width:40px;height:40px;flex:none;border-radius:50%;background:#13100b;border:1px solid rgba(200,150,62,.5);display:flex;align-items:center;justify-content:center;color:#c8963e;font-size:15px">▲</div>
+          <div><div style="font-family:'Barlow';font-weight:600;font-size:12px;letter-spacing:.2em;color:#7d7261">ERA CLÁSICA · 1996–2003 · CORE DESIGN</div><h3 style="margin:2px 0 0;font-family:'Archivo';font-weight:900;font-size:clamp(24px,3vw,30px)">Los orígenes</h3></div>
+        </div>
+        <p style="margin:16px 0 28px 56px;max-width:700px;font-size:15.5px;line-height:1.6;color:#b7a889">Core Design sienta las bases del género: seis expediciones que definieron la exploración y las trampas 3D de los noventa. Hoy, disponibles como colecciones Remastered.</p>
+        <div style="margin-left:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px">
+          <dc-import name="TitleCard" title="Tomb Raider" year="1996" premise="Debut de Lara en Perú, Grecia y Egipto: la primera gran expedición de la saga." has-steam="{{ false }}" steam-note="Disponible como parte de Tomb Raider I–III Remastered" compact="{{ true }}" image-src="assets/temple-sunset.svg" hint-size="100%,260px"></dc-import>
+          <dc-import name="TitleCard" title="Tomb Raider II" year="1997" premise="La búsqueda de la Daga de Xian lleva a Lara hasta el Tíbet y China." has-steam="{{ false }}" steam-note="Disponible como parte de Tomb Raider I–III Remastered" compact="{{ true }}" image-src="assets/desert-dunes.svg" hint-size="100%,260px"></dc-import>
+          <dc-import name="TitleCard" title="Tomb Raider III" year="1998" premise="Una odisea global tras un artefacto meteórico repartido por cuatro continentes." has-steam="{{ false }}" steam-note="Disponible como parte de Tomb Raider I–III Remastered" compact="{{ true }}" image-src="assets/cave-torch.svg" hint-size="100%,260px"></dc-import>
+          <dc-import name="TitleCard" title="TR: The Last Revelation" year="1999" premise="Egipto vuelve, ahora con los orígenes de Lara como telón de fondo." has-steam="{{ false }}" steam-note="Disponible como parte de Tomb Raider IV–VI Remastered" compact="{{ true }}" image-src="assets/temple-sunset.svg" hint-size="100%,260px"></dc-import>
+          <dc-import name="TitleCard" title="TR: Chronicles" year="2000" premise="Un mosaico de misiones que repasan aventuras pasadas de Lara." has-steam="{{ false }}" steam-note="Disponible como parte de Tomb Raider IV–VI Remastered" compact="{{ true }}" image-src="assets/desert-dunes.svg" hint-size="100%,260px"></dc-import>
+          <dc-import name="TitleCard" title="TR: The Angel of Darkness" year="2003" premise="El giro más oscuro de la era clásica, entre conspiraciones y ocultismo." has-steam="{{ false }}" steam-note="Disponible como parte de Tomb Raider IV–VI Remastered" compact="{{ true }}" image-src="assets/cave-torch.svg" hint-size="100%,260px"></dc-import>
+        </div>
+      </div>
+
+      <!-- ERA 2 -->
+      <div class="tr-reveal" style="position:relative;margin-bottom:80px">
+        <div style="display:flex;align-items:center;gap:16px">
+          <div style="position:relative;z-index:1;width:40px;height:40px;flex:none;border-radius:50%;background:#13100b;border:1px solid rgba(200,150,62,.5);display:flex;align-items:center;justify-content:center;color:#c8963e;font-size:15px">▲</div>
+          <div><div style="font-family:'Barlow';font-weight:600;font-size:12px;letter-spacing:.2em;color:#7d7261">ERA LEGEND/LAU · 2006–2008 · CRYSTAL DYNAMICS</div><h3 style="margin:2px 0 0;font-family:'Archivo';font-weight:900;font-size:clamp(24px,3vw,30px)">El relevo</h3></div>
+        </div>
+        <p style="margin:16px 0 28px 56px;max-width:700px;font-size:15.5px;line-height:1.6;color:#b7a889">Crystal Dynamics toma las riendas: motor nuevo, acrobacias más fluidas y una Lara más humana que nunca.</p>
+        <div style="margin-left:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px">
+          <dc-import name="TitleCard" title="Tomb Raider: Legend" year="2006" era="REINICIO NARRATIVO · CRYSTAL DYNAMICS" premise="Lara investiga la desaparición de su madre y descubre los primeros hilos de Avalon." has-steam="{{ true }}" steam-url="#" image-src="assets/jungle-ruins.svg" hint-size="100%,420px"></dc-import>
+          <dc-import name="TitleCard" title="Tomb Raider: Anniversary" year="2007" era="REMAKE · CRYSTAL DYNAMICS" premise="La aventura original de 1996, reconstruida con la jugabilidad moderna de Legend." has-steam="{{ true }}" steam-url="#" image-src="assets/temple-sunset.svg" hint-size="100%,420px"></dc-import>
+          <dc-import name="TitleCard" title="Tomb Raider: Underworld" year="2008" era="CIERRE DE TRILOGÍA · CRYSTAL DYNAMICS" premise="El cierre de la trilogía, en busca de los secretos perdidos de Avalon." has-steam="{{ true }}" steam-url="#" image-src="assets/cliff-tomb.svg" hint-size="100%,420px"></dc-import>
+        </div>
+      </div>
+
+      <!-- ERA 3 -->
+      <div class="tr-reveal" style="position:relative;margin-bottom:64px">
+        <div style="display:flex;align-items:center;gap:16px">
+          <div style="position:relative;z-index:1;width:40px;height:40px;flex:none;border-radius:50%;background:#13100b;border:1px solid rgba(200,150,62,.5);display:flex;align-items:center;justify-content:center;color:#c8963e;font-size:15px">▲</div>
+          <div><div style="font-family:'Barlow';font-weight:600;font-size:12px;letter-spacing:.2em;color:#7d7261">ERA SURVIVOR/REBOOT · 2013–2018 · CRYSTAL DYNAMICS</div><h3 style="margin:2px 0 0;font-family:'Archivo';font-weight:900;font-size:clamp(24px,3vw,30px)">El reinicio moderno</h3></div>
+        </div>
+        <p style="margin:16px 0 28px 56px;max-width:700px;font-size:15.5px;line-height:1.6;color:#b7a889">Una trilogía cinematográfica que humaniza a Lara: del trauma de un naufragio a convertirse en la Superviviente.</p>
+        <div style="margin-left:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px">
+          <dc-import name="TitleCard" title="Tomb Raider" year="2013" era="REINICIO · CRYSTAL DYNAMICS" premise="El origen. Una Lara joven naufraga en la isla de Yamatai y aprende a sobrevivir." rating="PEGI 18" has-steam="{{ true }}" steam-url="https://store.steampowered.com/" image-src="assets/cliff-tomb.svg" hint-size="100%,420px"></dc-import>
+          <dc-import name="TitleCard" title="Rise of the Tomb Raider" year="2015" era="EXPANSIÓN · CRYSTAL DYNAMICS" premise="Lara sigue los pasos de una civilización perdida en Siberia y se enfrenta a una organización paramilitar." rating="PEGI 16" has-steam="{{ true }}" steam-url="https://store.steampowered.com/" image-src="assets/cave-torch.svg" hint-size="100%,420px"></dc-import>
+          <dc-import name="TitleCard" title="Shadow of the Tomb Raider" year="2018" era="CIERRE DE TRILOGÍA · CRYSTAL DYNAMICS" premise="El final de la trilogía: Lara se convierte en la Tomb Raider completa entre profecías mayas." rating="PEGI 16" has-steam="{{ true }}" steam-url="https://store.steampowered.com/" image-src="assets/jungle-ruins.svg" hint-size="100%,420px"></dc-import>
+        </div>
+      </div>
+
+      <!-- EL FUTURO (marcador) -->
+      <div class="tr-reveal" style="position:relative">
+        <div style="display:flex;align-items:center;gap:16px">
+          <div data-tr-anim style="position:relative;z-index:1;width:40px;height:40px;flex:none;border-radius:50%;background:#a85a32;border:1px solid rgba(230,189,115,.6);display:flex;align-items:center;justify-content:center;color:#f3ebdc;font-size:15px;animation:trChevron 2.4s ease-in-out infinite">✦</div>
+          <div><div style="font-family:'Barlow';font-weight:600;font-size:12px;letter-spacing:.2em;color:#e6bd73">A CONTINUACIÓN</div><h3 style="margin:2px 0 0;font-family:'Archivo';font-weight:900;font-size:clamp(24px,3vw,30px)">El futuro</h3></div>
+        </div>
+        <p style="margin:16px 0 8px 56px;max-width:640px;font-size:15.5px;line-height:1.6;color:#b7a889">Un nuevo capítulo de Lara Croft está en desarrollo. Sigue bajando para saber cómo enterarte primero.</p>
+        <a href="#tr-future" style="margin-left:56px;display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:#e6bd73;font-family:'Archivo';font-weight:700;font-size:14px;border-bottom:1px solid rgba(230,189,115,.4)" style-hover="border-bottom-color:#e6bd73">Ir al cierre <span aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OTROS JUEGOS (colapsable) ============ -->
+  <section aria-labelledby="tr-other-h" data-screen-label="Otros juegos" id="tr-other" style="background:#0e0b07;border-top:1px solid rgba(200,150,62,.16);border-bottom:1px solid rgba(200,150,62,.16)">
+    <div style="max-width:1200px;margin:0 auto;padding:64px 24px">
+      <button onClick="{{ toggleOther }}" aria-expanded="{{ otherOpen }}" aria-controls="tr-other-panel" style="width:100%;display:flex;align-items:center;gap:16px;background:transparent;border:none;color:inherit;cursor:pointer;padding:0;text-align:left" style-focus="outline:2px solid #e6bd73;outline-offset:6px">
+        <span aria-hidden="true" style="font-size:15px;color:#c8963e;transform:{{ otherArrowTransform }};transition:transform .25s;flex:none">▲</span>
+        <span>
+          <span style="display:block;font-family:'Barlow';font-weight:600;font-size:12px;letter-spacing:.2em;color:#7d7261">FUERA DEL HILO PRINCIPAL</span>
+          <h2 id="tr-other-h" style="margin:2px 0 0;font-family:'Archivo';font-weight:900;font-size:clamp(24px,3vw,32px)">Otros juegos de la saga</h2>
+        </span>
+        <span style="margin-left:auto;font-family:'Archivo';font-weight:700;font-size:13px;color:#e6bd73;flex:none">{{ otherToggleLabel }}</span>
+      </button>
+      <sc-if value="{{ otherOpen }}" hint-placeholder-val="{{ false }}">
+        <div id="tr-other-panel" style="margin-top:32px">
+          <p style="margin:0 0 24px;max-width:700px;font-size:15px;line-height:1.6;color:#b7a889">Spin-offs que exploran otros géneros dentro del universo Tomb Raider, fuera de la línea narrativa principal.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px">
+            <dc-import name="TitleCard" title="Guardian of Light" year="2010" premise="Acción cooperativa vista desde arriba: Lara se une a un guerrero maya para detener un mal ancestral." has-steam="{{ true }}" steam-url="#" compact="{{ true }}" image-src="assets/jungle-ruins.svg" hint-size="100%,260px"></dc-import>
+            <dc-import name="TitleCard" title="Temple of Osiris" year="2014" premise="Hasta 4 jugadores compiten y cooperan para reunir las piezas de Osiris." has-steam="{{ true }}" steam-url="#" compact="{{ true }}" image-src="assets/desert-dunes.svg" hint-size="100%,260px"></dc-import>
+            <dc-import name="TitleCard" title="Lara Croft GO" year="2015" premise="Puzles por turnos en tablero: la esencia de Tomb Raider reducida a su mínima expresión." has-steam="{{ true }}" steam-url="#" compact="{{ true }}" image-src="assets/temple-sunset.svg" hint-size="100%,260px"></dc-import>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <!-- ============ MÁS ALLÁ DE LOS JUEGOS ============ -->
+  <section aria-labelledby="tr-beyond-h" data-screen-label="Más allá" id="tr-beyond" style="max-width:1200px;margin:0 auto;padding:96px 24px">
+    <div class="tr-reveal" style="margin-bottom:48px;text-align:center">
+      <div style="font-family:'Barlow';font-weight:600;font-size:12px;letter-spacing:.2em;color:#e6bd73;margin-bottom:10px">MÁS ALLÁ DE LOS JUEGOS</div>
+      <h2 id="tr-beyond-h" style="margin:0;font-family:'Archivo';font-weight:900;font-size:clamp(26px,4vw,38px)">Lara también conquistó la pantalla</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px">
+      <div class="tr-reveal">
+        <div style="font-family:'Archivo';font-weight:700;font-size:13px;letter-spacing:.14em;color:#a85a32;margin-bottom:16px">CINE</div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;gap:16px;align-items:center;background:#1c1710;border:1px solid rgba(200,150,62,.18);border-radius:4px;padding:16px">
+            <image-slot id="film-poster-2001" style="width:64px;height:88px;flex:none" shape="rounded" radius="2" src="assets/poster-frame.svg" placeholder="Cartel"></image-slot>
+            <div>
+              <div style="font-family:'Archivo';font-weight:700;font-size:16px">Lara Croft: Tomb Raider</div>
+              <div style="font-size:13px;color:#7d7261;margin:2px 0 8px">2001 · La cuna de la vida (2003)</div>
+              <a href="#" target="_blank" rel="noopener noreferrer" title="Enlace externo — pendiente de licencia" style="font-size:13px;color:#e6bd73;text-decoration:underline">Más información ↗</a>
+            </div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:center;background:#1c1710;border:1px solid rgba(200,150,62,.18);border-radius:4px;padding:16px">
+            <image-slot id="film-poster-2018" style="width:64px;height:88px;flex:none" shape="rounded" radius="2" src="assets/poster-frame.svg" placeholder="Cartel"></image-slot>
+            <div>
+              <div style="font-family:'Archivo';font-weight:700;font-size:16px">Tomb Raider</div>
+              <div style="font-size:13px;color:#7d7261;margin:2px 0 8px">2018 · reinicio cinematográfico</div>
+              <a href="#" target="_blank" rel="noopener noreferrer" title="Enlace externo — pendiente de licencia" style="font-size:13px;color:#e6bd73;text-decoration:underline">Más información ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tr-reveal">
+        <div style="font-family:'Archivo';font-weight:700;font-size:13px;letter-spacing:.14em;color:#a85a32;margin-bottom:16px">MERCHANDISING</div>
+        <div style="background:#1c1710;border:1px solid rgba(200,150,62,.18);border-radius:4px;padding:24px;height:calc(100% - 32px)">
+          <p style="margin:0 0 18px;font-size:15px;line-height:1.6;color:#d9cbae">Figuras de colección, réplicas del arco y el equipo de Lara, ropa y artículos oficiales de la saga.</p>
+          <a href="#" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:transparent;border:1px solid rgba(200,150,62,.5);color:#e6bd73;font-family:'Archivo';font-weight:700;font-size:13.5px;padding:11px 18px;border-radius:2px" style-hover="background:rgba(200,150,62,.12)" style-focus="outline:3px solid #e6bd73;outline-offset:2px">Ver tienda oficial <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CIERRE "EL FUTURO" + NEWSLETTER ============ -->
+  <section aria-labelledby="tr-future-h" data-screen-label="El futuro" id="tr-future" style="position:relative;overflow:hidden;background:linear-gradient(180deg,#1c1710,#0c0a06);border-top:1px solid rgba(200,150,62,.22)">
+    <div aria-hidden="true" style="position:absolute;inset:0;opacity:.5;background:radial-gradient(70% 60% at 50% 0%,rgba(200,150,62,.18),transparent)"></div>
+    <div class="tr-reveal" style="position:relative;max-width:720px;margin:0 auto;padding:110px 24px;text-align:center">
+      <div style="font-family:'Barlow';font-weight:600;font-size:12px;letter-spacing:.3em;color:#e6bd73;margin-bottom:16px">LA AVENTURA CONTINÚA</div>
+      <h2 id="tr-future-h" style="margin:0 0 20px;font-family:'Archivo';font-weight:900;font-size:clamp(30px,5vw,52px);line-height:1.05">El futuro de Lara Croft</h2>
+      <p style="margin:0 0 44px;font-size:17px;line-height:1.65;color:#d9cbae">Un nuevo Tomb Raider está en desarrollo. Todavía no hay detalles públicos — pero puedes ser de los primeros en enterarte en cuanto los haya.</p>
+      <div style="display:flex;justify-content:center">
+        <dc-import name="NewsletterForm" hint-size="480px,140px"></dc-import>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer role="contentinfo" style="background:#0a0805;border-top:1px solid rgba(200,150,62,.16)">
+    <div style="max-width:1200px;margin:0 auto;padding:56px 24px 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px">
+      <div>
+        <div style="font-family:'Archivo';font-weight:900;letter-spacing:.18em;font-size:16px;margin-bottom:14px">TOMB RAIDER</div>
+        <p style="margin:0;font-size:13px;line-height:1.6;color:#7d7261;max-width:320px">Landing de descubrimiento no oficial. Tomb Raider y Lara Croft son marcas registradas de sus respectivos propietarios. Contenido de imagen y vídeo: material oficial pendiente de licencia.</p>
+      </div>
+      <div>
+        <div style="font-family:'Archivo';font-weight:700;font-size:12px;letter-spacing:.14em;color:#b7a889;margin-bottom:14px">EXPLORAR</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:14px">
+          <a href="#tr-timeline" style="text-decoration:none;color:#d9cbae" style-hover="color:#e6bd73">La saga</a>
+          <a href="#tr-other" style="text-decoration:none;color:#d9cbae" style-hover="color:#e6bd73">Otros juegos</a>
+          <a href="#tr-beyond" style="text-decoration:none;color:#d9cbae" style-hover="color:#e6bd73">Más allá de los juegos</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'Archivo';font-weight:700;font-size:12px;letter-spacing:.14em;color:#b7a889;margin-bottom:14px">LEGAL</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:14px">
+          <a href="#privacy" style="text-decoration:none;color:#d9cbae" style-hover="color:#e6bd73">Política de privacidad</a>
+          <a href="#legal" style="text-decoration:none;color:#d9cbae" style-hover="color:#e6bd73">Aviso legal</a>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:1200px;margin:0 auto;padding:20px 24px;border-top:1px solid rgba(200,150,62,.1);font-size:12px;color:#5f574a">© 2026 · Prototipo de diseño, sin fines comerciales.</div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { tokensOpen: false, heroPlaying: true, otherOpen: false };
+
+  componentDidMount() {
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    const io = new IntersectionObserver((ents) => {
+      ents.forEach(e => { if (e.isIntersecting) { e.target.classList.add('tr-in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.tr-reveal').forEach(el => io.observe(el));
+    this._io = io;
+    if (!reduce) {
+      this._onScroll = () => {
+        const y = window.scrollY || 0;
+        const video = document.getElementById('tr-hero-video');
+        if (video) video.style.transform = 'translateY(' + (y * 0.08) + 'px) scale(1.06)';
+      };
+      window.addEventListener('scroll', this._onScroll, { passive: true });
+    }
+    const video = document.getElementById('tr-hero-video');
+    if (video) {
+      video.muted = true;
+      video.loop = true;
+      video.playsInline = true;
+      if (reduce) { video.pause(); } else { video.play().catch(() => {}); }
+      video.addEventListener('error', () => {
+        video.style.display = 'none';
+        const mob = document.getElementById('tr-hero-mobile-bg');
+        if (mob) mob.style.display = 'block';
+      });
+    }
+  }
+  componentWillUnmount() {
+    if (this._io) this._io.disconnect();
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+  }
+
+  setHeroAnim(on) {
+    document.querySelectorAll('[data-tr-anim]').forEach(el => { el.style.animationPlayState = on ? 'running' : 'paused'; });
+    const video = document.getElementById('tr-hero-video');
+    if (video) { if (on) { video.play().catch(() => {}); } else { video.pause(); } }
+  }
+  toggleHero = () => {
+    const on = !this.state.heroPlaying;
+    this.setState({ heroPlaying: on });
+    this.setHeroAnim(on);
+  };
+  toggleTokens = () => this.setState(s => ({ tokensOpen: !s.tokensOpen }));
+  toggleOther = () => this.setState(s => ({ otherOpen: !s.otherOpen }));
+
+  renderVals() {
+    const playing = this.state.heroPlaying;
+    return {
+      tokensOpen: this.state.tokensOpen,
+      tokensLabel: this.state.tokensOpen ? 'Ocultar' : 'Ver tokens',
+      toggleTokens: this.toggleTokens,
+      heroPlaying: playing,
+      toggleHero: this.toggleHero,
+      heroIcon: playing ? '❚❚' : '▶',
+      heroBtnLabel: playing ? 'Pausar' : 'Reproducir',
+      heroBtnAria: playing ? 'Pausar la animación de fondo del hero' : 'Reproducir la animación de fondo del hero',
+      otherOpen: this.state.otherOpen,
+      otherToggleLabel: this.state.otherOpen ? 'Ocultar' : 'Mostrar',
+      otherArrowTransform: this.state.otherOpen ? 'rotate(0deg)' : 'rotate(180deg)',
+      toggleOther: this.toggleOther,
+    };
+  }
+}
+</script>
+</body>
+</html>
