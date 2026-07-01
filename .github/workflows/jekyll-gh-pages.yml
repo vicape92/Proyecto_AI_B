@@ -1,47 +1,37 @@
 name: Deploy Vite App to GitHub Pages
-
 on:
   push:
     branches: ["main"]
   workflow_dispatch:
-
 permissions:
   contents: read
   pages: write
   id-token: write
-
 concurrency:
   group: "pages"
   cancel-in-progress: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          # Se ha eliminado la caché temporalmente para evitar el error con package-lock.json
-
       - name: Install dependencies
-        run: npm install # Cambiado de 'npm ci' a 'npm install'
-
+        run: npm install
+      - name: Install missing plugin (temporal, hasta arreglar package.json)
+        run: npm install @vitejs/plugin-react --no-save
       - name: Build with Vite
         run: npm run build
-
       - name: Setup Pages
         uses: actions/configure-pages@v5
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Vite compila por defecto en la carpeta 'dist' en la raíz
           path: './dist'
-
   deploy:
     environment:
       name: github-pages
