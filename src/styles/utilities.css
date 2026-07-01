@@ -1,0 +1,52 @@
+.tr-root {
+  position: relative;
+}
+
+.tr-skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  border-radius: 0 0 var(--tr-radius-sm) 0;
+  background: var(--tr-gold);
+  color: var(--tr-bg);
+  font-family: var(--tr-font-display);
+  font-weight: 700;
+  padding: 12px 18px;
+  text-decoration: none;
+}
+
+.tr-skip-link:focus,
+.tr-skip-link:focus-visible {
+  left: 0;
+  top: 0;
+}
+
+.tr-anchor-placeholder {
+  height: 0;
+  overflow: hidden;
+}
+
+.tr-button-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  border-radius: var(--tr-radius-xs);
+  background: var(--tr-gold);
+  color: var(--tr-bg);
+  font-family: var(--tr-font-display);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 15px 30px;
+  text-decoration: none;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+
+.tr-button-primary:hover {
+  background: var(--tr-gold-light);
+  transform: translateY(-2px);
+}

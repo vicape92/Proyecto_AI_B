@@ -1,0 +1,50 @@
+:root {
+  --tr-bg: #13100b;
+  --tr-bg-hero: #0c0a06;
+  --tr-bg-deep: #0a0805;
+  --tr-surface: #1c1710;
+  --tr-surface-2: #0e0b07;
+  --tr-surface-3: #0a0805;
+  --tr-surface-dark: #0e0b07;
+  --tr-gold: #c8963e;
+  --tr-gold-light: #e6bd73;
+  --tr-rust: #a85a32;
+  --tr-text: #f3ebdc;
+  --tr-text-warm: #e4d8bf;
+  --tr-text-muted: #d9cbae;
+  --tr-text-soft: #b7a889;
+  --tr-text-faint: #7d7261;
+  --tr-text-disabled: #5f574a;
+  --tr-error: #c97a4e;
+  --tr-warning: #e2a15c;
+
+  --tr-border-soft: rgba(200, 150, 62, 0.16);
+  --tr-border: rgba(200, 150, 62, 0.22);
+  --tr-border-mid: rgba(200, 150, 62, 0.35);
+  --tr-border-strong: rgba(200, 150, 62, 0.5);
+  --tr-gold-glow: rgba(230, 189, 115, 0.25);
+  --tr-hero-control-bg: rgba(12, 9, 5, 0.55);
+  --tr-hero-control-bg-hover: rgba(12, 9, 5, 0.8);
+
+  --tr-font-display: "Archivo", system-ui, sans-serif;
+  --tr-font-body: "Barlow", system-ui, sans-serif;
+
+  --tr-space-1: 4px;
+  --tr-space-2: 8px;
+  --tr-space-3: 12px;
+  --tr-space-4: 16px;
+  --tr-space-5: 24px;
+  --tr-space-6: 32px;
+  --tr-space-7: 40px;
+  --tr-space-8: 48px;
+  --tr-space-9: 56px;
+  --tr-space-10: 64px;
+  --tr-space-11: 96px;
+  --tr-space-12: 110px;
+
+  --tr-page-max: 1200px;
+  --tr-content-max: 720px;
+  --tr-radius-xs: 2px;
+  --tr-radius-sm: 4px;
+  --tr-radius-md: 6px;
+}

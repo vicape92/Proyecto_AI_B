@@ -4,6 +4,7 @@ Guia operativa para agentes y desarrolladores que trabajen en esta landing. Ante
 
 - `docs/implementation_plan.md`
 - `docs/historias-usuario-landing-tomb-raider.md`
+- `docs/estilos-comunes-diseno.md`
 - `docs/design/README.md`
 - `docs/design/Tomb Raider.dc.html`
 - `docs/design/TitleCard.dc.html`
@@ -18,9 +19,10 @@ El objetivo principal es descubrir la saga y recorrer su historia. No es una tie
 ## Fuente de verdad
 
 1. `docs/design/README.md` es la fuente de verdad visual: tokens, comportamiento, estados, accesibilidad y assets.
-2. `docs/implementation_plan.md` define el orden de ejecucion por fases.
-3. `docs/historias-usuario-landing-tomb-raider.md` define criterios de aceptacion.
-4. Los `.dc.html` son prototipos de diseno, no codigo de produccion.
+2. `docs/estilos-comunes-diseno.md` es la guia compartida de estilos para implementar esos tokens y contratos visuales.
+3. `docs/implementation_plan.md` define el orden de ejecucion por fases.
+4. `docs/historias-usuario-landing-tomb-raider.md` define criterios de aceptacion.
+5. Los `.dc.html` son prototipos de diseno, no codigo de produccion.
 
 No portes literalmente los `.dc.html`, `style` inline, `dc-import`, `sc-if`, `support.js` ni `image-slot.js`. Reproduce su estructura, apariencia, estados y comportamiento en el stack real.
 

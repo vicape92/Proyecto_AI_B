@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 560" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="psky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3a2a14"></stop><stop offset="0.6" stop-color="#1a1309"></stop><stop offset="1" stop-color="#0a0704"></stop>
+    </linearGradient>
+    <radialGradient id="pmoon" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#f3d192"></stop><stop offset="100%" stop-color="#e6bd73" stop-opacity="0"></stop>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="560" fill="url(#psky)"></rect>
+  <circle cx="200" cy="170" r="130" fill="url(#pmoon)"></circle>
+  <circle cx="200" cy="170" r="60" fill="#f3e2b8" opacity="0.9"></circle>
+  <path d="M0 560 L0 380 L90 300 L160 380 L230 260 L300 360 L400 300 L400 560 Z" fill="#0c0905"></path>
+</svg>
