@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "./Hero.css";
 
 const HERO_VIDEO_SRC = "/assets/hero-video.mp4";
-const HERO_POSTER_SRC = "/assets/temple-sunset.svg";
+const HERO_POSTER_SRC = "/assets/tomb-raider-hero.png";
 
 export function Hero() {
   const videoRef = useRef<HTMLVideoElement | null>(null);

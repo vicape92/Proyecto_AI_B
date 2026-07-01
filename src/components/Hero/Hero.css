@@ -24,7 +24,7 @@
 }
 
 .tr-hero__fallback {
-  background-image: url("/assets/temple-sunset.svg");
+  background-image: url("/assets/tomb-raider-hero.png");
   background-position: center 30%;
   background-size: cover;
   display: none;

@@ -5,15 +5,15 @@ const hookPanels = [
     kicker: "¿QUIÉN ES?",
     title: "Lara Croft",
     body: "Una aristócrata inglesa convertida en arqueóloga de acción. Desde 1996 se abre paso entre templos olvidados, tumbas trampa y ruinas perdidas, decidida a desvelar los secretos que otros prefieren dejar enterrados.",
-    imageSrc: "/assets/cave-torch.svg",
-    imageAlt: "Placeholder editorial de una cueva iluminada por antorchas para representar a Lara Croft",
+    imageSrc: "/assets/lara-croft-character.png",
+    imageAlt: "Lara Croft frente a una cascada con dos pistolas",
   },
   {
     kicker: "¿QUÉ ES?",
     title: "Tomb Raider",
     body: "Una saga de aventura y exploración con más de 25 años de historia: puzles ambientales, plataformas imposibles y una arqueóloga que nunca deja una tumba sin explorar. Del píxel a la fotogrametría, así ha evolucionado su leyenda.",
-    imageSrc: "/assets/temple-sunset.svg",
-    imageAlt: "Placeholder editorial de un templo al atardecer para representar la saga Tomb Raider",
+    imageSrc: "/assets/tomb-raider-hero.png",
+    imageAlt: "Lara Croft entrando en una tumba monumental con una antorcha",
   },
 ] as const;
 

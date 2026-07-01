@@ -14,15 +14,15 @@ const filmReferences: FilmReference[] = [
   {
     title: "Lara Croft: Tomb Raider",
     meta: "2001 · La cuna de la vida (2003)",
-    imageSrc: "/assets/poster-frame.svg",
-    imageAlt: "Placeholder de cartel para las películas clásicas de Tomb Raider",
+    imageSrc: "/assets/lara-croft-tomb-raider-film-2001.jpeg",
+    imageAlt: "Cartel de Lara Croft: Tomb Raider",
     url: beyondLinks.filmClassic,
   },
   {
     title: "Tomb Raider",
     meta: "2018 · reinicio cinematográfico",
-    imageSrc: "/assets/poster-frame.svg",
-    imageAlt: "Placeholder de cartel para Tomb Raider 2018",
+    imageSrc: "/assets/tomb-raider-film-2018.jpg",
+    imageAlt: "Cartel de Tomb Raider 2018",
     url: beyondLinks.filmReboot,
   },
 ];

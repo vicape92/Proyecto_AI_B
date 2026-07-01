@@ -18,9 +18,8 @@ export const sagaEras: SagaEra[] = [
         year: "1996",
         premise:
           "Debut de Lara en Perú, Grecia y Egipto: la primera gran expedición de la saga.",
-        imageSrc: "/assets/temple-sunset.svg",
-        imageAlt: "Placeholder de ruinas iluminadas para Tomb Raider",
-        mediaLabel: "Placeholder visual",
+        imageSrc: "/assets/tomb-raider-1996.png",
+        imageAlt: "Arte de portada de Tomb Raider",
         steamNote: "Disponible como parte de Tomb Raider I-III Remastered",
       },
       {
@@ -28,9 +27,8 @@ export const sagaEras: SagaEra[] = [
         title: "Tomb Raider II",
         year: "1997",
         premise: "La búsqueda de la Daga de Xian lleva a Lara hasta el Tíbet y China.",
-        imageSrc: "/assets/desert-dunes.svg",
-        imageAlt: "Placeholder de dunas para Tomb Raider II",
-        mediaLabel: "Placeholder visual",
+        imageSrc: "/assets/tomb-raider-ii.jpg",
+        imageAlt: "Arte de portada de Tomb Raider II",
         steamNote: "Disponible como parte de Tomb Raider I-III Remastered",
       },
       {
@@ -39,9 +37,8 @@ export const sagaEras: SagaEra[] = [
         year: "1998",
         premise:
           "Una odisea global tras un artefacto meteórico repartido por cuatro continentes.",
-        imageSrc: "/assets/cave-torch.svg",
-        imageAlt: "Placeholder de cueva con antorcha para Tomb Raider III",
-        mediaLabel: "Placeholder visual",
+        imageSrc: "/assets/tomb-raider-iii.jpg",
+        imageAlt: "Arte de portada de Tomb Raider III",
         steamNote: "Disponible como parte de Tomb Raider I-III Remastered",
       },
       {
@@ -49,9 +46,8 @@ export const sagaEras: SagaEra[] = [
         title: "TR: The Last Revelation",
         year: "1999",
         premise: "Egipto vuelve, ahora con los orígenes de Lara como telón de fondo.",
-        imageSrc: "/assets/temple-sunset.svg",
-        imageAlt: "Placeholder de templo para Tomb Raider: The Last Revelation",
-        mediaLabel: "Placeholder visual",
+        imageSrc: "/assets/tomb-raider-the-last-revelation.jpg",
+        imageAlt: "Arte de portada de Tomb Raider: The Last Revelation",
         steamNote: "Disponible como parte de Tomb Raider IV-VI Remastered",
       },
       {
@@ -59,9 +55,8 @@ export const sagaEras: SagaEra[] = [
         title: "TR: Chronicles",
         year: "2000",
         premise: "Un mosaico de misiones que repasan aventuras pasadas de Lara.",
-        imageSrc: "/assets/desert-dunes.svg",
-        imageAlt: "Placeholder de ruinas en el desierto para Tomb Raider: Chronicles",
-        mediaLabel: "Placeholder visual",
+        imageSrc: "/assets/tomb-raider-chronicles.png",
+        imageAlt: "Arte de portada de Tomb Raider: Chronicles",
         steamNote: "Disponible como parte de Tomb Raider IV-VI Remastered",
       },
       {
@@ -70,9 +65,8 @@ export const sagaEras: SagaEra[] = [
         year: "2003",
         premise:
           "El giro más oscuro de la era clásica, entre conspiraciones y ocultismo.",
-        imageSrc: "/assets/cave-torch.svg",
-        imageAlt: "Placeholder de caverna para Tomb Raider: The Angel of Darkness",
-        mediaLabel: "Placeholder visual",
+        imageSrc: "/assets/tomb-raider-the-angel-of-darkness.webp",
+        imageAlt: "Arte de portada de Tomb Raider: The Angel of Darkness",
         steamNote: "Disponible como parte de Tomb Raider IV-VI Remastered",
       },
     ],
@@ -94,9 +88,8 @@ export const sagaEras: SagaEra[] = [
         eraLabel: "REINICIO NARRATIVO · CRYSTAL DYNAMICS",
         premise:
           "Lara investiga la desaparición de su madre y descubre los primeros hilos de Avalon.",
-        imageSrc: "/assets/jungle-ruins.svg",
-        imageAlt: "Placeholder de jungla y ruinas para Tomb Raider: Legend",
-        mediaLabel: "Placeholder visual",
+        imageSrc: "/assets/tomb-raider-legend.webp",
+        imageAlt: "Arte de portada de Tomb Raider: Legend",
         steamUrl: steamLinks["tomb-raider-legend"],
       },
       {
@@ -106,9 +99,8 @@ export const sagaEras: SagaEra[] = [
         eraLabel: "REMAKE · CRYSTAL DYNAMICS",
         premise:
           "La aventura original de 1996, reconstruida con la jugabilidad moderna de Legend.",
-        imageSrc: "/assets/temple-sunset.svg",
-        imageAlt: "Placeholder de templo para Tomb Raider: Anniversary",
-        mediaLabel: "Placeholder visual",
+        imageSrc: "/assets/tomb-raider-anniversary.webp",
+        imageAlt: "Arte de portada de Tomb Raider: Anniversary",
         steamUrl: steamLinks["tomb-raider-anniversary"],
       },
       {
@@ -117,9 +109,8 @@ export const sagaEras: SagaEra[] = [
         year: "2008",
         eraLabel: "CIERRE DE TRILOGÍA · CRYSTAL DYNAMICS",
         premise: "El cierre de la trilogía, en busca de los secretos perdidos de Avalon.",
-        imageSrc: "/assets/cliff-tomb.svg",
-        imageAlt: "Placeholder de tumba en acantilado para Tomb Raider: Underworld",
-        mediaLabel: "Placeholder visual",
+        imageSrc: "/assets/tomb-raider-underworld.webp",
+        imageAlt: "Arte de portada de Tomb Raider: Underworld",
         steamUrl: steamLinks["tomb-raider-underworld"],
       },
     ],
@@ -142,9 +133,8 @@ export const sagaEras: SagaEra[] = [
         premise:
           "El origen. Una Lara joven naufraga en la isla de Yamatai y aprende a sobrevivir.",
         rating: "PEGI 18",
-        imageSrc: "/assets/cliff-tomb.svg",
-        imageAlt: "Placeholder de acantilado para Tomb Raider 2013",
-        mediaLabel: "Placeholder visual",
+        imageSrc: "/assets/tomb-raider-2013.webp",
+        imageAlt: "Arte de portada de Tomb Raider 2013",
         steamUrl: steamLinks["tomb-raider-2013"],
       },
       {
@@ -155,9 +145,8 @@ export const sagaEras: SagaEra[] = [
         premise:
           "Lara sigue los pasos de una civilización perdida en Siberia y se enfrenta a una organización paramilitar.",
         rating: "PEGI 16",
-        imageSrc: "/assets/cave-torch.svg",
-        imageAlt: "Placeholder de cueva con antorcha para Rise of the Tomb Raider",
-        mediaLabel: "Placeholder visual",
+        imageSrc: "/assets/rise-of-the-tomb-raider.webp",
+        imageAlt: "Arte de portada de Rise of the Tomb Raider",
         steamUrl: steamLinks["rise-of-the-tomb-raider"],
       },
       {
@@ -168,9 +157,8 @@ export const sagaEras: SagaEra[] = [
         premise:
           "El final de la trilogía: Lara se convierte en la Tomb Raider completa entre profecías mayas.",
         rating: "PEGI 16",
-        imageSrc: "/assets/jungle-ruins.svg",
-        imageAlt: "Placeholder de jungla para Shadow of the Tomb Raider",
-        mediaLabel: "Placeholder visual",
+        imageSrc: "/assets/shadow-of-the-tomb-raider.webp",
+        imageAlt: "Arte de portada de Shadow of the Tomb Raider",
         steamUrl: steamLinks["shadow-of-the-tomb-raider"],
       },
     ],
