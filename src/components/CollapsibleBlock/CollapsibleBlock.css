@@ -1,0 +1,132 @@
+.tr-other {
+  background: var(--tr-surface-dark);
+  border-bottom: 1px solid var(--tr-border-soft);
+  border-top: 1px solid var(--tr-border-soft);
+}
+
+.tr-other__inner {
+  margin: 0 auto;
+  max-width: var(--tr-page-max);
+  padding: 64px 24px;
+}
+
+.tr-other__toggle {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  gap: 16px;
+  padding: 0;
+  text-align: left;
+  width: 100%;
+}
+
+.tr-other__toggle:focus-visible {
+  outline-offset: 6px;
+}
+
+.tr-other__icon {
+  color: var(--tr-gold);
+  flex: none;
+  font-size: 15px;
+  transition: transform 0.25s ease;
+}
+
+.tr-other__toggle[aria-expanded="true"] .tr-other__icon {
+  transform: rotate(180deg);
+}
+
+.tr-other__copy {
+  min-width: 0;
+}
+
+.tr-other__kicker {
+  color: var(--tr-text-faint);
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+.tr-other__heading {
+  margin: 0;
+}
+
+.tr-other__title {
+  display: block;
+  font-family: var(--tr-font-display);
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 900;
+  line-height: 1.15;
+  margin-top: 2px;
+}
+
+.tr-other__state {
+  color: var(--tr-gold-light);
+  flex: none;
+  font-family: var(--tr-font-display);
+  font-size: 13px;
+  font-weight: 700;
+  margin-left: auto;
+}
+
+.tr-other__panel {
+  margin-top: 32px;
+}
+
+.tr-other__intro {
+  color: var(--tr-text-soft);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0 0 24px;
+  max-width: 700px;
+}
+
+.tr-other__grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+@media (max-width: 680px) {
+  .tr-other__inner {
+    padding: 56px 20px;
+  }
+
+  .tr-other__toggle {
+    align-items: flex-start;
+  }
+
+  .tr-other__state {
+    align-self: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .tr-other__inner {
+    padding-inline: 16px;
+  }
+
+  .tr-other__toggle {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .tr-other__state {
+    grid-column: 2;
+    margin-left: 0;
+    margin-top: 8px;
+  }
+
+  .tr-other__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tr-other__icon {
+    transition: none;
+  }
+}

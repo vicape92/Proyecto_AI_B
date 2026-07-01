@@ -1,0 +1,178 @@
+import type { SagaEra } from "../types/landing";
+import { steamLinks } from "./externalLinks";
+
+export const sagaEras: SagaEra[] = [
+  {
+    id: "classic",
+    label: "ERA CLÁSICA",
+    years: "1996-2003",
+    studio: "CORE DESIGN",
+    title: "Los orígenes",
+    intro:
+      "Core Design sienta las bases del género: seis expediciones que definieron la exploración y las trampas 3D de los noventa. Hoy, disponibles como colecciones Remastered.",
+    cardVariant: "compact",
+    games: [
+      {
+        slug: "tomb-raider-1996",
+        title: "Tomb Raider",
+        year: "1996",
+        premise:
+          "Debut de Lara en Perú, Grecia y Egipto: la primera gran expedición de la saga.",
+        imageSrc: "/assets/temple-sunset.svg",
+        imageAlt: "Placeholder de ruinas iluminadas para Tomb Raider",
+        mediaLabel: "Placeholder visual",
+        steamNote: "Disponible como parte de Tomb Raider I-III Remastered",
+      },
+      {
+        slug: "tomb-raider-ii",
+        title: "Tomb Raider II",
+        year: "1997",
+        premise: "La búsqueda de la Daga de Xian lleva a Lara hasta el Tíbet y China.",
+        imageSrc: "/assets/desert-dunes.svg",
+        imageAlt: "Placeholder de dunas para Tomb Raider II",
+        mediaLabel: "Placeholder visual",
+        steamNote: "Disponible como parte de Tomb Raider I-III Remastered",
+      },
+      {
+        slug: "tomb-raider-iii",
+        title: "Tomb Raider III",
+        year: "1998",
+        premise:
+          "Una odisea global tras un artefacto meteórico repartido por cuatro continentes.",
+        imageSrc: "/assets/cave-torch.svg",
+        imageAlt: "Placeholder de cueva con antorcha para Tomb Raider III",
+        mediaLabel: "Placeholder visual",
+        steamNote: "Disponible como parte de Tomb Raider I-III Remastered",
+      },
+      {
+        slug: "tomb-raider-the-last-revelation",
+        title: "TR: The Last Revelation",
+        year: "1999",
+        premise: "Egipto vuelve, ahora con los orígenes de Lara como telón de fondo.",
+        imageSrc: "/assets/temple-sunset.svg",
+        imageAlt: "Placeholder de templo para Tomb Raider: The Last Revelation",
+        mediaLabel: "Placeholder visual",
+        steamNote: "Disponible como parte de Tomb Raider IV-VI Remastered",
+      },
+      {
+        slug: "tomb-raider-chronicles",
+        title: "TR: Chronicles",
+        year: "2000",
+        premise: "Un mosaico de misiones que repasan aventuras pasadas de Lara.",
+        imageSrc: "/assets/desert-dunes.svg",
+        imageAlt: "Placeholder de ruinas en el desierto para Tomb Raider: Chronicles",
+        mediaLabel: "Placeholder visual",
+        steamNote: "Disponible como parte de Tomb Raider IV-VI Remastered",
+      },
+      {
+        slug: "tomb-raider-the-angel-of-darkness",
+        title: "TR: The Angel of Darkness",
+        year: "2003",
+        premise:
+          "El giro más oscuro de la era clásica, entre conspiraciones y ocultismo.",
+        imageSrc: "/assets/cave-torch.svg",
+        imageAlt: "Placeholder de caverna para Tomb Raider: The Angel of Darkness",
+        mediaLabel: "Placeholder visual",
+        steamNote: "Disponible como parte de Tomb Raider IV-VI Remastered",
+      },
+    ],
+  },
+  {
+    id: "legend",
+    label: "ERA LEGEND/LAU",
+    years: "2006-2008",
+    studio: "CRYSTAL DYNAMICS",
+    title: "El relevo",
+    intro:
+      "Crystal Dynamics toma las riendas: motor nuevo, acrobacias más fluidas y una Lara más humana que nunca.",
+    cardVariant: "full",
+    games: [
+      {
+        slug: "tomb-raider-legend",
+        title: "Tomb Raider: Legend",
+        year: "2006",
+        eraLabel: "REINICIO NARRATIVO · CRYSTAL DYNAMICS",
+        premise:
+          "Lara investiga la desaparición de su madre y descubre los primeros hilos de Avalon.",
+        imageSrc: "/assets/jungle-ruins.svg",
+        imageAlt: "Placeholder de jungla y ruinas para Tomb Raider: Legend",
+        mediaLabel: "Placeholder visual",
+        steamUrl: steamLinks["tomb-raider-legend"],
+      },
+      {
+        slug: "tomb-raider-anniversary",
+        title: "Tomb Raider: Anniversary",
+        year: "2007",
+        eraLabel: "REMAKE · CRYSTAL DYNAMICS",
+        premise:
+          "La aventura original de 1996, reconstruida con la jugabilidad moderna de Legend.",
+        imageSrc: "/assets/temple-sunset.svg",
+        imageAlt: "Placeholder de templo para Tomb Raider: Anniversary",
+        mediaLabel: "Placeholder visual",
+        steamUrl: steamLinks["tomb-raider-anniversary"],
+      },
+      {
+        slug: "tomb-raider-underworld",
+        title: "Tomb Raider: Underworld",
+        year: "2008",
+        eraLabel: "CIERRE DE TRILOGÍA · CRYSTAL DYNAMICS",
+        premise: "El cierre de la trilogía, en busca de los secretos perdidos de Avalon.",
+        imageSrc: "/assets/cliff-tomb.svg",
+        imageAlt: "Placeholder de tumba en acantilado para Tomb Raider: Underworld",
+        mediaLabel: "Placeholder visual",
+        steamUrl: steamLinks["tomb-raider-underworld"],
+      },
+    ],
+  },
+  {
+    id: "survivor",
+    label: "ERA SURVIVOR/REBOOT",
+    years: "2013-2018",
+    studio: "CRYSTAL DYNAMICS",
+    title: "El reinicio moderno",
+    intro:
+      "Una trilogía cinematográfica que humaniza a Lara: del trauma de un naufragio a convertirse en la Superviviente.",
+    cardVariant: "full",
+    games: [
+      {
+        slug: "tomb-raider-2013",
+        title: "Tomb Raider",
+        year: "2013",
+        eraLabel: "REINICIO · CRYSTAL DYNAMICS",
+        premise:
+          "El origen. Una Lara joven naufraga en la isla de Yamatai y aprende a sobrevivir.",
+        rating: "PEGI 18",
+        imageSrc: "/assets/cliff-tomb.svg",
+        imageAlt: "Placeholder de acantilado para Tomb Raider 2013",
+        mediaLabel: "Placeholder visual",
+        steamUrl: steamLinks["tomb-raider-2013"],
+      },
+      {
+        slug: "rise-of-the-tomb-raider",
+        title: "Rise of the Tomb Raider",
+        year: "2015",
+        eraLabel: "EXPANSIÓN · CRYSTAL DYNAMICS",
+        premise:
+          "Lara sigue los pasos de una civilización perdida en Siberia y se enfrenta a una organización paramilitar.",
+        rating: "PEGI 16",
+        imageSrc: "/assets/cave-torch.svg",
+        imageAlt: "Placeholder de cueva con antorcha para Rise of the Tomb Raider",
+        mediaLabel: "Placeholder visual",
+        steamUrl: steamLinks["rise-of-the-tomb-raider"],
+      },
+      {
+        slug: "shadow-of-the-tomb-raider",
+        title: "Shadow of the Tomb Raider",
+        year: "2018",
+        eraLabel: "CIERRE DE TRILOGÍA · CRYSTAL DYNAMICS",
+        premise:
+          "El final de la trilogía: Lara se convierte en la Tomb Raider completa entre profecías mayas.",
+        rating: "PEGI 16",
+        imageSrc: "/assets/jungle-ruins.svg",
+        imageAlt: "Placeholder de jungla para Shadow of the Tomb Raider",
+        mediaLabel: "Placeholder visual",
+        steamUrl: steamLinks["shadow-of-the-tomb-raider"],
+      },
+    ],
+  },
+];

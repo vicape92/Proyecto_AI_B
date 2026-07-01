@@ -1,0 +1,163 @@
+.tr-beyond {
+  margin: 0 auto;
+  max-width: var(--tr-page-max);
+  overflow-x: clip;
+  padding: 96px 24px;
+}
+
+.tr-beyond__heading {
+  margin-bottom: 48px;
+  text-align: center;
+}
+
+.tr-beyond__kicker {
+  color: var(--tr-gold-light);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  margin: 0 0 10px;
+}
+
+.tr-beyond h2 {
+  font-family: var(--tr-font-display);
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 900;
+  margin: 0;
+}
+
+.tr-beyond__grid {
+  display: grid;
+  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.tr-beyond__label {
+  color: var(--tr-rust);
+  font-family: var(--tr-font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  margin: 0 0 16px;
+}
+
+.tr-beyond__film-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tr-beyond__film,
+.tr-beyond__merch {
+  background: var(--tr-surface);
+  border: 1px solid rgba(200, 150, 62, 0.18);
+  border-radius: var(--tr-radius-sm);
+}
+
+.tr-beyond__film {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+}
+
+.tr-beyond__poster {
+  border: 1px solid var(--tr-border-soft);
+  border-radius: var(--tr-radius-xs);
+  flex: none;
+  height: 88px;
+  object-fit: cover;
+  width: 64px;
+}
+
+.tr-beyond__film-title {
+  font-family: var(--tr-font-display);
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.tr-beyond__film-meta {
+  color: var(--tr-text-faint);
+  font-size: 13px;
+  margin: 2px 0 8px;
+}
+
+.tr-beyond__link {
+  color: var(--tr-gold-light);
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.tr-beyond__link:hover {
+  color: var(--tr-text);
+}
+
+.tr-beyond__pending {
+  color: var(--tr-text-faint);
+  display: inline-block;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.tr-beyond__merch {
+  min-height: calc(100% - 32px);
+  padding: 24px;
+}
+
+.tr-beyond__merch p {
+  color: var(--tr-text-muted);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0 0 18px;
+}
+
+.tr-beyond__button {
+  align-items: center;
+  background: transparent;
+  border: 1px solid var(--tr-border-strong);
+  border-radius: var(--tr-radius-xs);
+  color: var(--tr-gold-light);
+  display: inline-flex;
+  font-family: var(--tr-font-display);
+  font-size: 13.5px;
+  font-weight: 700;
+  gap: 8px;
+  padding: 11px 18px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.tr-beyond__button:hover {
+  background: rgba(200, 150, 62, 0.12);
+}
+
+@media (max-width: 680px) {
+  .tr-beyond {
+    padding: 80px 20px;
+  }
+
+  .tr-beyond__heading {
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tr-beyond {
+    padding-inline: 16px;
+  }
+
+  .tr-beyond__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .tr-beyond__film {
+    align-items: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tr-beyond__button {
+    transition: none;
+  }
+}

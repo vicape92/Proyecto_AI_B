@@ -1,0 +1,108 @@
+.tr-footer {
+  background: var(--tr-bg-deep);
+  border-top: 1px solid var(--tr-border-soft);
+}
+
+.tr-footer__grid {
+  display: grid;
+  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin: 0 auto;
+  max-width: var(--tr-page-max);
+  padding: 56px 24px 32px;
+}
+
+.tr-footer__wordmark {
+  font-family: var(--tr-font-display);
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  margin: 0 0 14px;
+}
+
+.tr-footer__disclaimer {
+  color: var(--tr-text-faint);
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 320px;
+}
+
+.tr-footer__legal-note {
+  color: var(--tr-text-disabled);
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 10px 0 0;
+  max-width: 340px;
+}
+
+.tr-footer__cta {
+  align-items: center;
+  border-bottom: 1px solid rgba(230, 189, 115, 0.4);
+  color: var(--tr-gold-light);
+  display: inline-flex;
+  font-family: var(--tr-font-display);
+  font-size: 13px;
+  font-weight: 700;
+  gap: 8px;
+  margin-top: 18px;
+  text-decoration: none;
+}
+
+.tr-footer__cta:hover {
+  border-bottom-color: var(--tr-gold-light);
+}
+
+.tr-footer__heading {
+  color: var(--tr-text-soft);
+  font-family: var(--tr-font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  margin: 0 0 14px;
+}
+
+.tr-footer__links {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tr-footer__links a {
+  color: var(--tr-text-muted);
+  text-decoration: none;
+}
+
+.tr-footer__links a:hover {
+  color: var(--tr-gold-light);
+}
+
+.tr-footer__copyright {
+  border-top: 1px solid rgba(200, 150, 62, 0.1);
+  color: var(--tr-text-disabled);
+  font-size: 12px;
+  margin: 0 auto;
+  max-width: var(--tr-page-max);
+  padding: 20px 24px;
+}
+
+@media (max-width: 680px) {
+  .tr-footer__grid {
+    padding: 48px 20px 28px;
+  }
+
+  .tr-footer__copyright {
+    padding-inline: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tr-footer__grid,
+  .tr-footer__copyright {
+    padding-inline: 16px;
+  }
+}

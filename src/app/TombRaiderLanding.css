@@ -1,0 +1,42 @@
+.tr-future {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(200, 150, 62, 0.18), transparent 42%),
+    linear-gradient(180deg, var(--tr-bg), var(--tr-surface-2));
+  padding: var(--tr-space-12) var(--tr-space-5);
+}
+
+.tr-future__inner {
+  margin: 0 auto;
+  max-width: var(--tr-content-max);
+  text-align: center;
+}
+
+.tr-future__kicker {
+  color: var(--tr-gold-light);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  margin: 0 0 var(--tr-space-3);
+}
+
+.tr-future h2 {
+  font-family: var(--tr-font-display);
+  font-size: clamp(30px, 5vw, 52px);
+  font-weight: 900;
+  line-height: 1.05;
+  margin: 0;
+}
+
+.tr-future__intro {
+  color: var(--tr-text-muted);
+  font-size: 17px;
+  line-height: 1.65;
+  margin: var(--tr-space-5) auto var(--tr-space-8);
+  max-width: 620px;
+}
+
+@media (max-width: 680px) {
+  .tr-future {
+    padding: 80px 20px;
+  }
+}
